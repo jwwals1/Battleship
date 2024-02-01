@@ -1,5 +1,8 @@
-function ship() {
-    const length = length;
+import shipTypes from "./shipTypes";
+
+function Ship(shipType) {
+    const type = shipType;
+    const length = shipTypes[shipType].length;
     let hits = 0;
     function hit() {
         this.hits++
@@ -9,6 +12,7 @@ function ship() {
         else return false
     }
     return {
+        type,
         length,
         hits,
         hit,
@@ -16,4 +20,4 @@ function ship() {
     }
 }
 
-export default ship
+export default Ship
