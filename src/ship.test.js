@@ -12,3 +12,15 @@ test('type of ship and length', () => {
     expect(ship.type).toBe('carrier')
     expect(ship.length).toBe(5)
 })
+
+
+test('ship is sunk after 5 hits', () => {
+    let ship = Ship('carrier')
+    ship.hit()
+    expect(ship.isSunk()).toBe(false)
+    ship.hit()
+    ship.hit()
+    ship.hit()
+    ship.hit()
+    expect(ship.isSunk()).toBe(true)
+})
