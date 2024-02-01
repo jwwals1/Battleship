@@ -1,7 +1,7 @@
-import ship from "./ship";
+import Ship from "./ship";
 
 function initialLoad() {
-    ship()
+    Ship()
 }
 
 initialLoad()
