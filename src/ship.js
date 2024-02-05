@@ -4,6 +4,8 @@ function Ship(shipType) {
     const type = shipType;
     const length = shipTypes[shipType].length;
     let hits = 0;
+    let squares;
+    let direction;
     function hit() {
         this.hits++
     }
@@ -16,7 +18,9 @@ function Ship(shipType) {
         length,
         hits,
         hit,
-        isSunk
+        isSunk,
+        squares,
+        direction
     }
 }
 
