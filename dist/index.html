@@ -4,8 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Battleship</title>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div id="gameboard-container"></div>
+    <div class="option-container">
+      <div class="carrier-preview carrier" draggable="true"></div>
+      <div class="battleship-preview battleship" draggable="true"></div>
+      <div class="cruiser-preview cruiser" draggable="true"></div>
+      <div class="submarine-preview submarine" draggable="true"></div>
+      <div class="destroyer-preview destroyer" draggable="true"></div>
+    </div>
+    <div id="flip-button">FLIP</div>
+    <div id="start-button">START</div>
     <script src="main.js"></script>
   </body>
 </html>
