@@ -1,3 +1,6 @@
+import ShipTypes from "./shipTypes";
+// import {carrier, battle} from "./shipTypes"
+
 const optionContainer = document.querySelector('.option-container')
 const flipButton = document.querySelector('#flip-button')
 const gamesBoardContainer = document.querySelector('#gamesboard-container')
@@ -14,17 +17,49 @@ function flip() {
     optionShips.forEach(optionShip => optionShip.style.transform = `rotate(${degree}deg)`)
 }
 
-const width = 10
+flipButton.addEventListener('click', flip)
 
-function createBoard(color) {
+
+function createBoard(player) {
     const gameBoardContainer = document.createElement('div');
     gameBoardContainer.classList.add('game-board')
-    gameBoardContainer.style.backgroundColor = color
-    
-    gamesBoardContainer.append(gameBoardContainer)
+    gameBoardContainer.id = player
+    for (let row = 0; row < 10; row++) {
+        for (let col = 0; col < 10; col ++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.dataset.row = row;
+            cell.dataset.col = col;
+            gamesBoardContainer.appendChild(gameBoardContainer)
+            gameBoardContainer.appendChild(cell)
+        }
+    }
+    return gameBoardContainer
 }
 
-createBoard('yellow')
-createBoard('pink')
 
-flipButton.addEventListener('click', flip)
+// function createBoard(color, user) {
+//     const gameBoardContainer = document.createElement('div');
+//     gameBoardContainer.classList.add('game-board')
+//     gameBoardContainer.style.backgroundColor = color
+//     gameBoardContainer.id = user
+
+//     for (let i = 0; i < 100; i++) {
+//         const block = document.createElement('div')
+//         block.classList.add('block');
+//         block.id = i
+//         gameBoardContainer.append(block)
+//     }
+    
+//     gamesBoardContainer.append(gameBoardContainer)
+// }
+
+
+
+// function addShipPiece() {
+
+// }
+
+createBoard('player')
+createBoard('computer')
+
