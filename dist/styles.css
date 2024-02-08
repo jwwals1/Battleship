@@ -1,6 +1,28 @@
+#gamesboard-container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .game-board {
-    width: 200px;
-    height: 200px;
+    width: 216px;
+    height: 224px;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid;
+}
+
+.cell:hover {
+    background-color: gray;
 }
 
 .option-container {
