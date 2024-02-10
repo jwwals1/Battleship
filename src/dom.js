@@ -1,65 +1,58 @@
-import ShipTypes from "./shipTypes";
-// import {carrier, battle} from "./shipTypes"
-
-const optionContainer = document.querySelector('.option-container')
-const flipButton = document.querySelector('#flip-button')
-const gamesBoardContainer = document.querySelector('#gamesboard-container')
+import Game from './game';
+import ShipTypes from './shipTypes';
 
 
-let degree = 0;
-function flip() {
-    const optionShips = Array.from(optionContainer.children)
-    if (degree === 0) {
-        degree = 90
-    } else {
-        degree = 0
-    }
-    optionShips.forEach(optionShip => optionShip.style.transform = `rotate(${degree}deg)`)
+const container = document.querySelector('#container');
+document.body.appendChild(container);
+const gameContainer = document.querySelector('#gameContainer');
+container.appendChild(gameContainer);
+
+const newGameButton = document.querySelector('.newGameButton');
+// newGameButton.addEventListener('click', newGame);
+
+const game = Game()
+
+// function startGame(player1, player2) {
+//     game.newGame(player1, player2)
+//     drawGame()
+// }
+
+// function newGame() {
+//     const newPlayer = game.creat
+// }
+
+function drawGame() {
+    const player1BoardContainer = drawBoardContainer(game.player1);
+    const player2BoardContainer = drawBoardContainer(game.player2);
+
+    gameContainer.append(player1BoardContainer, player2BoardContainer)
 }
 
-flipButton.addEventListener('click', flip)
+function drawBoardContainer(player) {
+    const boardContainer = document.createElement('div');
+    boardContainer.classList.add('boardContainer');
+    const playerName = document.createElement('h3');
+    playerName.textContent = 'Your Ships';
+    const playerBoard = drawBoard(player);
+    boardContainer.append(playerName, playerBoard)
+    return boardContainer
+}
 
-
-function createBoard(player) {
-    const gameBoardContainer = document.createElement('div');
-    gameBoardContainer.classList.add('game-board')
-    gameBoardContainer.id = player
+function drawBoard(player) {
+    const board = document.createElement('div');
+    board.classList.add('board');
     for (let row = 0; row < 10; row++) {
-        for (let col = 0; col < 10; col ++) {
+        for (let col = 0; col < 10; col++) {
             const cell = document.createElement('div');
             cell.classList.add('cell');
+            cell.dataset.player = player ? player.number : 0;
             cell.dataset.row = row;
             cell.dataset.col = col;
-            gamesBoardContainer.appendChild(gameBoardContainer)
-            gameBoardContainer.appendChild(cell)
+            gameContainer.appendChild(board)
+            board.appendChild(cell);
         }
     }
-    return gameBoardContainer
+    return board
 }
-
-
-// function createBoard(color, user) {
-//     const gameBoardContainer = document.createElement('div');
-//     gameBoardContainer.classList.add('game-board')
-//     gameBoardContainer.style.backgroundColor = color
-//     gameBoardContainer.id = user
-
-//     for (let i = 0; i < 100; i++) {
-//         const block = document.createElement('div')
-//         block.classList.add('block');
-//         block.id = i
-//         gameBoardContainer.append(block)
-//     }
-    
-//     gamesBoardContainer.append(gameBoardContainer)
-// }
-
-
-
-// function addShipPiece() {
-
-// }
-
-createBoard('player')
-createBoard('computer')
-
+// drawBoard()
+drawGame()
